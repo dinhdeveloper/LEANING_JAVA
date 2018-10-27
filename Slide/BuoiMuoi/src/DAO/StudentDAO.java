@@ -1,0 +1,75 @@
+package DAO;
+
+import java.io.*;
+import java.util.*;
+
+import entity.Student;
+
+public class StudentDAO {
+	
+	public void writeStudent(Student stu) {
+		try(
+			ObjectOutputStream stream = new ObjectOutputStream(
+				new BufferedOutputStream(
+					new FileOutputStream("d:/student.mov")
+				)
+			)
+		){
+			stream.writeObject(stu);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	
+	
+	public void readStudent() {
+		try (
+			ObjectInputStream stream = new ObjectInputStream(
+				new BufferedInputStream(
+						new FileInputStream("d:/student.mov")
+				)
+			)
+		){
+			Student stu = (Student)stream.readObject();
+			System.out.println(stu);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	
+	public void writeListStudent(List<Student> list) {
+		try(
+			ObjectOutputStream stream = new ObjectOutputStream(
+				new BufferedOutputStream(
+					new FileOutputStream("d:/student.mov")
+				)
+			)
+		){
+			stream.writeObject(list);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	
+	public void readListStudent() {
+		try (
+			ObjectInputStream stream = new ObjectInputStream(
+				new BufferedInputStream(
+						new FileInputStream("d:/student.mov")
+				)
+			)
+		){
+			List<Student> list = (List<Student>)stream.readObject();
+			list.forEach(System.out::println);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+}
+
+
+
+
+
+
+
